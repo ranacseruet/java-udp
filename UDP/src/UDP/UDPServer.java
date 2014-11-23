@@ -7,30 +7,40 @@ import java.net.SocketException;
 
 public class UDPServer 
 {
-	protected String host;
-	protected int port;
-	protected DatagramSocket socket;
-	protected DatagramPacket request;
+	protected String 			host;
+	protected int 				port;
+	protected DatagramSocket 	socket;
+	protected DatagramPacket 	request;
+	protected int 				DGRAM_LENGTH;
 	
-	public UDPServer(String host, int port) throws SocketException
-	{
-		this.host = host;
-		this.port = port;
-		this.socket = new DatagramSocket(this.port);
+		
+	public UDPServer(String host, 
+					 int 	port,
+					 int DGRAM_LENGTH) throws SocketException {
+		this.host 		= host;
+		this.port 		= port;
+		this.DGRAM_LENGTH = DGRAM_LENGTH;
+		this.socket 	= new DatagramSocket(this.port);
+		byte [] buffer 	= new byte[this.DGRAM_LENGTH];
+		this.request 	= new DatagramPacket(buffer, buffer.length);
+	}
+	
+	public UDPServer(String host, 
+					 int 	port) throws SocketException {
+		this(host, port, 6400);
 	}
 	
 	public String recieveRequest()
 	{
 		String data = null;
-		try {
-			byte [] buffer = new byte[10000];
-			request = new DatagramPacket(buffer, buffer.length);
+		try {			
 			this.socket.receive(request);
 			data = new String(request.getData());
 		}
 		catch(Exception err) {
 			err.printStackTrace();
 		}
+		
 		return data;
 	}
 	
@@ -39,8 +49,7 @@ public class UDPServer
 		DatagramPacket reply = new DatagramPacket(response.getBytes(), response.length(), request.getAddress(), request.getPort());
 		try {
 			this.socket.send(reply);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {			
 			e.printStackTrace();
 		}
 	}
