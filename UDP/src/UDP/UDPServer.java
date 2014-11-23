@@ -7,10 +7,10 @@ import java.net.SocketException;
 
 public class UDPServer 
 {
-	private String host;
-	private int port;
-	private DatagramSocket socket;
-	private DatagramPacket request;
+	protected String host;
+	protected int port;
+	protected DatagramSocket socket;
+	protected DatagramPacket request;
 	
 	public UDPServer(String host, int port) throws SocketException
 	{
