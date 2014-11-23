@@ -12,17 +12,18 @@ public class UDPServer
 	protected DatagramSocket 	socket;
 	protected DatagramPacket 	request;
 	protected int 				DGRAM_LENGTH;
-	
 		
 	public UDPServer(String host, 
 					 int 	port,
 					 int DGRAM_LENGTH) throws SocketException {
-		this.host 		= host;
-		this.port 		= port;
-		this.DGRAM_LENGTH = DGRAM_LENGTH;
-		this.socket 	= new DatagramSocket(this.port);
-		byte [] buffer 	= new byte[this.DGRAM_LENGTH];
-		this.request 	= new DatagramPacket(buffer, buffer.length);
+
+		this.host 			= host;
+		this.port 			= port;
+		this.DGRAM_LENGTH 	= DGRAM_LENGTH;
+
+		this.socket 		= new DatagramSocket(this.port);
+		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
+		this.request 		= new DatagramPacket(buffer, buffer.length);
 	}
 	
 	public UDPServer(String host, 
