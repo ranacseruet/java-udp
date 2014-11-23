@@ -43,8 +43,10 @@ public class UDPServer
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{
-			this.socket.close();
-		}
+	}
+	
+	public void close()
+	{
+		this.socket.close();
 	}
 }
