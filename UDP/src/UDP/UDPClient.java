@@ -6,8 +6,8 @@ import java.net.InetAddress;
 
 public class UDPClient 
 {
-	private String host;
-	private int port;
+	protected String host;
+	protected int port;
 	
 	public UDPClient(String host, int port)
 	{
