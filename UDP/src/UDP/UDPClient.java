@@ -41,6 +41,6 @@ public class UDPClient
 		}finally{
 			aSocket.close();
 		}
-		return response;
+		return response.trim();
 	}
 }
