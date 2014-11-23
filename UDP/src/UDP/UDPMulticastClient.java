@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class UDPMulticastClient extends UDPClient{
+public class UDPMulticastClient extends UDPClient {
 
 	public UDPMulticastClient(String host, 
 			                  int 	 port) {
