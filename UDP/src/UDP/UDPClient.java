@@ -7,12 +7,14 @@ import java.net.InetAddress;
 public class UDPClient 
 {
 	protected String host;
-	protected int port;
+	protected int    port;
+	protected DatagramSocket  socket;
 	
 	public UDPClient(String host, int port)
 	{
-		this.host = host;
-		this.port = port;
+		this.host   = host;
+		this.port   = port;
+		this.socket = null;
 	}
 	
 	/**
@@ -22,24 +24,24 @@ public class UDPClient
 	 */
 	public String send(String message)
 	{
-		DatagramSocket aSocket = null;
+		
 		String response = null;
 		try{
-			aSocket = new DatagramSocket();
+			this.socket = new DatagramSocket();
 			String requestData = message;
 			byte [] m = requestData.getBytes();
 			InetAddress aHost = InetAddress.getByName(this.host); //change for IP address
 			int serverPort = this.port;
 			DatagramPacket request = new DatagramPacket(m, requestData.length(), aHost, serverPort);
-	        aSocket.send(request);
+	        this.socket.send(request);
 	        byte [] buffer = new byte[1000];
 	        DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-	        aSocket.receive(reply);
+	        this.socket.receive(reply);
 	        response = new String(reply.getData());
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			aSocket.close();
+			this.socket.close();
 		}
 		return response.trim();
 	}
