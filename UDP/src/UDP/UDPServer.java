@@ -31,9 +31,6 @@ public class UDPServer
 		catch(Exception err) {
 			err.printStackTrace();
 		}
-		finally{
-			this.socket.close();
-		}
 		return data;
 	}
 	
@@ -45,6 +42,9 @@ public class UDPServer
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally{
+			this.socket.close();
 		}
 	}
 }
