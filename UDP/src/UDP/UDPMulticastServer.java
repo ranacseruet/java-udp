@@ -4,6 +4,14 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
+/**
+ * This is a Server library helps to receive multicast
+ * message over LAN.
+ *
+ * @author  Eftakhairul Islam <eftakhairul@gmail.ocm>
+ * @version 1.0
+ * @since   2014-10-24
+ */
 public class UDPMulticastServer extends UDPServer {
 	
 	public MulticastSocket socket;	
