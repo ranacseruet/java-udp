@@ -3,6 +3,7 @@ package UDP;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 
 public class UDPClient 
 {
@@ -33,16 +34,23 @@ public class UDPClient
 			InetAddress aHost = InetAddress.getByName(this.host); //change for IP address
 			int serverPort = this.port;
 			DatagramPacket request = new DatagramPacket(m, requestData.length(), aHost, serverPort);
-	        this.socket.send(request);
+			this.socket.send(request);
 	        byte [] buffer = new byte[1000];
 	        DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
+	        socket.setSoTimeout(1000);
 	        this.socket.receive(reply);
+	        System.out.println("recieved response");
 	        response = new String(reply.getData());
-		}catch(Exception e){
+	        response = response.trim();
+		}
+		catch(SocketTimeoutException e){
+			e.printStackTrace();
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			this.socket.close();
 		}
-		return response.trim();
+		return response;
 	}
 }
