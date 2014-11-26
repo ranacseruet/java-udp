@@ -5,6 +5,14 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * This is a Client library helps to broadcast multicast
+ * message over LAN.
+ *
+ * @author  Eftakhairul Islam <eftakhairul@gmail.ocm>
+ * @version 1.0
+ * @since   2014-10-24
+ */
 public class UDPMulticastClient extends UDPClient {
 
 	public UDPMulticastClient(String host, 
