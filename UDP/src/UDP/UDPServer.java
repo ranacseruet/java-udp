@@ -5,8 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-public class UDPServer 
-{
+public class UDPServer {
 	protected String 			host;
 	protected int 				port;
 	protected DatagramSocket 	socket;
@@ -31,8 +30,7 @@ public class UDPServer
 		this(host, port, 6400);
 	}
 	
-	public String recieveRequest()
-	{
+	public String recieveRequest() 	{
 		String data = null;
 		try {			
 			this.socket.receive(request);
@@ -57,8 +55,7 @@ public class UDPServer
 		return request.getData();
 	}
 	
-	public void sendResponse(String response)
-	{
+	public void sendResponse(String response) 	{
 		DatagramPacket reply = new DatagramPacket(response.getBytes(), response.length(), request.getAddress(), request.getPort());
 		try {
 			this.socket.send(reply);
@@ -67,8 +64,11 @@ public class UDPServer
 		}
 	}
 	
-	public void close()
-	{
+	public boolean isNull() {
+		return (this.socket == null)? true:false;
+	}
+	
+	public void close() {
 		this.socket.close();
 	}
 }
