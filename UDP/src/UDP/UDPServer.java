@@ -53,7 +53,6 @@ public class UDPServer {
 	}
 	
 	public boolean isNull() {
-
 		return (this.socket == null)? true:false;
 	}
 	
