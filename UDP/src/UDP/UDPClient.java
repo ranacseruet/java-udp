@@ -37,7 +37,7 @@ public class UDPClient
 			this.socket.send(request);
 	        byte [] buffer = new byte[1000];
 	        DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-	        socket.setSoTimeout(1000);
+	        socket.setSoTimeout(2000);
 	        this.socket.receive(reply);
 	        System.out.println("recieved response");
 	        response = new String(reply.getData());

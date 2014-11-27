@@ -42,7 +42,19 @@ public class UDPServer
 			err.printStackTrace();
 		}
 		
-		return data;
+		return data.trim();
+	}
+	
+	public byte[] recieveByteRequest()
+	{
+		try {			
+			this.socket.receive(request);
+		}
+		catch(Exception err) {
+			err.printStackTrace();
+		}
+		
+		return request.getData();
 	}
 	
 	public void sendResponse(String response)
