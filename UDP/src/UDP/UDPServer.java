@@ -30,7 +30,11 @@ public class UDPServer {
 		this(host, port, 6400);
 	}
 
-	public UDPServer() {}
+	public UDPServer() {
+		this.DGRAM_LENGTH 	= DGRAM_LENGTH;
+		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
+		this.request 		= new DatagramPacket(buffer, buffer.length);
+	}
 	
 	public String recieveRequest() 	{
 		String data = null;
