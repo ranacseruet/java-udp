@@ -31,16 +31,13 @@ public class UDPServer {
 	}
 
 	public UDPServer() {
-		this.DGRAM_LENGTH 	= DGRAM_LENGTH;
-		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
-		this.request 		= new DatagramPacket(buffer, buffer.length);
 	}
 	
 	public String recieveRequest() 	{
 		String data = null;
 		try {			
-			this.socket.receive(request);
-			data = new String(request.getData());
+			this.socket.receive(this.request);
+			data = new String(this.request.getData());
 		}
 		catch(Exception err) {
 			err.printStackTrace();

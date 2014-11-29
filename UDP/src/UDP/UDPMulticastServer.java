@@ -14,10 +14,6 @@ import java.net.MulticastSocket;
  */
 public class UDPMulticastServer extends UDPServer {
 
-	protected String 		  host;
-	protected int 			  port;
-	public 	  MulticastSocket socket;
-
 	public UDPMulticastServer(String host,
 							  int 	 port) throws IOException {
 		super();
@@ -25,6 +21,10 @@ public class UDPMulticastServer extends UDPServer {
 		this.host 	= host;
 		this.port 	= port;
 		this.socket = new MulticastSocket(this.port);
+
+		this.DGRAM_LENGTH 	= 6400;
+		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
+		this.request 		= new DatagramPacket(buffer, buffer.length);
 		
 		// must bind receive side
 		socket.joinGroup(InetAddress.getByName(this.host)); 
