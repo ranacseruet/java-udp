@@ -19,7 +19,6 @@ public class UDPMulticastServer extends UDPServer {
 	public UDPMulticastServer(String host,
 							  int 	 port) throws IOException {
 		super();
-		
 		this.socket = new MulticastSocket(this.port);
 		
 		// must bind receive side
