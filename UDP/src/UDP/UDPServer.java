@@ -29,6 +29,8 @@ public class UDPServer {
 					 int 	port) throws SocketException {
 		this(host, port, 6400);
 	}
+
+	public UDPServer() {}
 	
 	public String recieveRequest() 	{
 		String data = null;
