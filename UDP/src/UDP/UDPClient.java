@@ -52,4 +52,24 @@ public class UDPClient {
 
 		return response;
 	}
+	
+	public void sendOnly(String message) {
+		try{
+			this.socket 			= new DatagramSocket();
+			String requestData 		= message;
+			byte [] m 				= requestData.getBytes();
+			InetAddress aHost 		= InetAddress.getByName(this.host); //change for IP address
+			int serverPort 			= this.port;
+			DatagramPacket request 	= new DatagramPacket(m, requestData.length(), aHost, serverPort);
+			this.socket.send(request);
+		}
+		catch(SocketTimeoutException e){
+			e.printStackTrace();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			this.socket.close();
+		}
+	}
 }
