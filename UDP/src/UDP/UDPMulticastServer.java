@@ -13,12 +13,16 @@ import java.net.MulticastSocket;
  * @since   2014-10-24
  */
 public class UDPMulticastServer extends UDPServer {
-	
-	public MulticastSocket socket;	
+
+	protected String 		  host;
+	protected int 			  port;
+	public 	  MulticastSocket socket;
 
 	public UDPMulticastServer(String host,
 							  int 	 port) throws IOException {
 		super();
+		this.host = host;
+		this.port = port;
 		this.socket = new MulticastSocket(this.port);
 		
 		// must bind receive side
