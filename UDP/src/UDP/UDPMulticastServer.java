@@ -37,7 +37,7 @@ public class UDPMulticastServer extends UDPServer {
 		this(host, port, 6400);		 
 	}
 	
-	public String recieveRequest() 	{
+	public String recieve() {
 		String data = null;
 		try {			
 			((MulticastSocket)this.socket).receive(this.request);
@@ -48,34 +48,15 @@ public class UDPMulticastServer extends UDPServer {
 		}
 		
 		return data.trim();
-	}
-	
-	public String reliableRecieveRequest() 	{
-		String data = null;
-		try {			
-			((MulticastSocket)this.socket).receive(this.request);
-			data = new String(this.request.getData());
-			
-			DatagramPacket reply = new DatagramPacket("ok".getBytes(), 
-													  "ok".length(), 
-													  this.request.getAddress(), 
-													  this.request.getPort());
-			((MulticastSocket)this.socket).send(reply);
-		}
-		catch(Exception err) {
-			err.printStackTrace();
-		}
-		
-		return data.trim();
-	}
-	
-
+	}	
 	
 	public boolean isNull() {
 		return (this.socket == null)? true:false;
 	}
 	
 	public void close() {
-		this.socket.close();
+		if (!isNull()) {
+			this.socket.close();
+		}		
 	}
 }
