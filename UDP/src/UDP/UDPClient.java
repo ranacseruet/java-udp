@@ -61,13 +61,9 @@ public class UDPClient {
 			int serverPort 			= this.port;
 			DatagramPacket request 	= new DatagramPacket(m, requestData.length(), aHost, serverPort);
 			this.socket.send(request);
-		}
-		catch(SocketTimeoutException e){
+		} catch(Exception e) {
 			e.printStackTrace();
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}finally{
+		} finally {
 			this.socket.close();
 		}
 	}
