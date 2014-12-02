@@ -13,7 +13,6 @@ public class UDPClient {
 	public UDPClient(String host, int port)	{
 		this.host   = host;
 		this.port   = port;
-		this.socket = null;
 	}
 	
 	/**
