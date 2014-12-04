@@ -72,6 +72,8 @@ public class UDPServer {
 	}
 	
 	public void close() {
-		this.socket.close();
+		if (!isNull()) {
+			this.socket.close();
+		}
 	}
 }
