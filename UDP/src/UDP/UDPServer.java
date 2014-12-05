@@ -38,7 +38,8 @@ public class UDPServer {
 	public String recieveRequest() 	{
 		String data = null;
 		try {
-			//Arrays.fill(this.buffer, (byte) 0);
+			buffer 				= new byte[this.DGRAM_LENGTH];
+			this.request 		= new DatagramPacket(buffer, buffer.length);
 			this.socket.receive(this.request);
 			data = new String(this.request.getData());
 
