@@ -36,7 +36,7 @@ public class UDPClient {
 	        socket.setSoTimeout(2000);
 	        this.socket.receive(reply);
 
-	        System.out.println("recieved response");
+	        //System.out.println("recieved response");
 	        response 				= new String(reply.getData());
 	        response 				= response.trim();
 		}
