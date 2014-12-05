@@ -11,6 +11,7 @@ public class UDPServer {
 	protected DatagramSocket 	socket;
 	protected DatagramPacket 	request;
 	protected int 				DGRAM_LENGTH;
+	protected byte [] 			buffer;
 		
 	public UDPServer(String host, 
 					 int 	port,
@@ -21,7 +22,7 @@ public class UDPServer {
 		this.DGRAM_LENGTH 	= DGRAM_LENGTH;
 
 		this.socket 		= new DatagramSocket(this.port);
-		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
+		this.buffer 		= new byte[this.DGRAM_LENGTH];
 		this.request 		= new DatagramPacket(buffer, buffer.length);
 	}
 	
@@ -35,9 +36,11 @@ public class UDPServer {
 	
 	public String recieveRequest() 	{
 		String data = null;
-		try {			
+		try {
+			Arrays.fill(this.buffer, (byte) 0);
 			this.socket.receive(this.request);
 			data = new String(this.request.getData());
+
 		}
 		catch(Exception err) {
 			err.printStackTrace();

@@ -25,7 +25,7 @@ public class UDPMulticastServer extends UDPServer {
 		this.socket 		= new MulticastSocket(this.port);
 
 		this.DGRAM_LENGTH 	= DGRAM_LENGTH;
-		byte [] buffer 		= new byte[this.DGRAM_LENGTH];
+		this.buffer 		= new byte[this.DGRAM_LENGTH];
 		this.request 		= new DatagramPacket(buffer, buffer.length);
 		
 		// must bind receive side
@@ -41,6 +41,7 @@ public class UDPMulticastServer extends UDPServer {
 		String data = null;
 		try {			
 			((MulticastSocket)this.socket).receive(this.request);
+			Arrays.fill(this.buffer, (byte) 0);
 			data = new String(this.request.getData());
 		}
 		catch(Exception err) {
