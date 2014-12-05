@@ -42,7 +42,7 @@ public class UDPMulticastServer extends UDPServer {
 		String data = null;
 		try {			
 			((MulticastSocket)this.socket).receive(this.request);
-			Arrays.fill(this.buffer, (byte) 0);
+			//Arrays.fill(this.buffer, (byte) 0);
 			data = new String(this.request.getData());
 		}
 		catch(Exception err) {
