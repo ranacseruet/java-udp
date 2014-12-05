@@ -41,7 +41,7 @@ public class UDPClient {
 	        response 				= response.trim();
 		}
 		catch(SocketTimeoutException e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		catch(Exception e){
 			e.printStackTrace();
